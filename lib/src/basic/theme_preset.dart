@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'theme_data.dart';
 import 'style.dart';
+import '../types.dart';
 
 abstract class WxCardThemePreset extends WxCardThemeData
     with WxSheetThemePreset<WxCardThemeData> {
@@ -17,16 +18,23 @@ abstract class WxCardThemePreset extends WxCardThemeData
   final BuildContext context;
 
   @override
-  get style => WxCardStyle.from(super.style).copyWith(
-        direction: Axis.vertical,
-        textAlign: TextAlign.left,
-        tileWrap: false,
-        spacing: 15,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 10,
-        ),
-      );
+  WxSheetVariant? get variant => WxCardVariant.outlined;
+
+  @override
+  WxCardStyle get style => const WxCardStyle().merge(super.style);
+
+  @override
+  WxCardStyle baseStyle(data) {
+    return const WxCardStyle(
+      textAlign: TextAlign.left,
+      tileWrap: false,
+      spacing: 15,
+      padding: EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 10,
+      ),
+    );
+  }
 }
 
 class WxCardThemeAdaptive extends WxCardThemePreset {
@@ -37,8 +45,24 @@ class WxCardThemeAdaptive extends WxCardThemePreset {
     super.duration,
   });
 
+  WxCardThemePreset get platformTheme {
+    WxCardThemePreset theme = WxCardThemeM2(context);
+    if (isAndroid && useMaterial3) {
+      theme = WxCardThemeM3(context);
+    } else if (isIOS) {
+      theme = WxCardThemeIOS(context);
+    }
+    return theme;
+  }
+
   @override
-  get baseTheme => WxSheetThemeStaticAdaptive(context);
+  get baseTheme => platformTheme.baseTheme;
+
+  @override
+  get effectiveStyle => platformTheme.effectiveStyle;
+
+  @override
+  get styleResolver => platformTheme.styleResolver;
 }
 
 class WxCardThemeM2 extends WxCardThemePreset {
