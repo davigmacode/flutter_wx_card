@@ -2,11 +2,14 @@ import 'package:wx_sheet/wx_sheet.dart';
 import 'style.dart';
 
 class WxCardThemeData extends WxSheetThemeData<WxCardThemeData> {
-  /// Creates a theme data that can be used for [SheetTheme].
+  /// Creates a theme data that can be used for [WxCardTheme].
   const WxCardThemeData({
     super.animated,
     super.curve,
     super.duration,
+    super.variant,
+    super.size,
+    super.severity,
     WxCardStyle super.style = const WxCardStyle(),
     WxSheetStyleResolver<WxCardStyle>? super.styleResolver,
     super.overlay,
@@ -29,6 +32,9 @@ class WxCardThemeData extends WxSheetThemeData<WxCardThemeData> {
     animated,
     curve,
     duration,
+    variant,
+    size,
+    severity,
     style,
     styleResolver,
     overlay,
@@ -44,6 +50,9 @@ class WxCardThemeData extends WxSheetThemeData<WxCardThemeData> {
       animated: animated,
       curve: curve,
       duration: duration,
+      variant: variant,
+      size: size,
+      severity: severity,
       style: style,
       styleResolver: styleResolver,
       overlay: overlay,

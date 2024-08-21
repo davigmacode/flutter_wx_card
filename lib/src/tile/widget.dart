@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'theme.dart';
 import 'theme_data.dart';
+import 'style.dart';
 
 /// The sheet widget serves as the building block for many Widgetarian components,
 /// providing a base layer for customization.
@@ -47,6 +48,7 @@ class WxCardTile extends WxSheet<WxCardTileThemeData> {
     super.textOverflow,
     super.textSoftWrap,
     super.textWidthBasis,
+    super.adaptiveForegroundColor,
     super.foregroundColor,
     super.foregroundOpacity,
     super.foregroundAlpha,
@@ -67,6 +69,14 @@ class WxCardTile extends WxSheet<WxCardTileThemeData> {
     super.iconColor,
     super.iconOpacity,
     super.iconSize,
+    super.checkmarkColor,
+    super.checkmarkSize,
+    super.checkmarkWeight,
+    super.spinnerColor,
+    super.spinnerBackgroundColor,
+    super.spinnerSize,
+    super.spinnerWidth,
+    super.spinnerRounded,
     super.style,
     super.tooltip,
     super.disabled,
@@ -81,7 +91,21 @@ class WxCardTile extends WxSheet<WxCardTileThemeData> {
   get direction => Axis.horizontal;
 
   @override
-  getTheme(BuildContext context) {
+  WxCardTileStyle get effectiveStyle {
+    return const WxCardTileStyle().merge(super.effectiveStyle);
+  }
+
+  @override
+  WxCardTileThemeData getTheme(context) {
     return WxCardTileTheme.of(context);
+  }
+
+  @override
+  WxCardTileStyle getInheritedStyle(context, inherits) {
+    if (inherits) {
+      final parentStyle = getParentStyle(context);
+      return const WxCardTileStyle().merge(parentStyle).merge(effectiveStyle);
+    }
+    return effectiveStyle;
   }
 }

@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:wx_sheet/wx_sheet.dart';
 import 'theme_data.dart';
 import 'theme_preset.dart';
@@ -6,15 +6,15 @@ import 'style.dart';
 
 class WxCardTheme extends WxSheetTheme<WxCardThemeData> {
   /// Creates a theme that controls
-  /// how descendant [WxSheet]s should look like.
+  /// how descendant [WxCard]s should look like.
   const WxCardTheme({
     super.key,
-    required super.data,
+    required WxCardThemeData super.data,
     required super.child,
   });
 
-  /// Creates an [WxSheetTheme] that controls the style of
-  /// descendant widgets, and merges in the current [WxSheetTheme], if any.
+  /// Creates an [WxCardTheme] that controls the style of
+  /// descendant widgets, and merges in the current [WxCardTheme], if any.
   ///
   /// The [style] and [child] arguments must not be null.
   static Widget merge({
@@ -22,6 +22,9 @@ class WxCardTheme extends WxSheetTheme<WxCardThemeData> {
     bool? animated,
     Curve? curve,
     Duration? duration,
+    WxSheetVariant? variant,
+    WxSheetSize? size,
+    Color? severity,
     WxCardStyle? style,
     WxSheetStyleResolver<WxCardStyle>? styleResolver,
     bool? overlay,
@@ -29,23 +32,36 @@ class WxCardTheme extends WxSheetTheme<WxCardThemeData> {
     bool? focusable,
     bool? disabled,
     MouseCursor? mouseCursor,
+    Widget? leading,
+    Widget? trailing,
     WxCardThemeData? data,
     required Widget child,
   }) {
-    return WxSheetTheme.merge<WxCardThemeData>(
-      key: key,
-      data: data,
-      animated: animated,
-      curve: curve,
-      duration: duration,
-      style: style,
-      styleResolver: styleResolver,
-      overlay: overlay,
-      feedback: feedback,
-      focusable: focusable,
-      disabled: disabled,
-      mouseCursor: mouseCursor,
-      child: child,
+    return Builder(
+      builder: (BuildContext context) {
+        final parent = WxCardTheme.of(context);
+        return WxCardTheme(
+          key: key,
+          data: parent.merge(data).copyWith(
+                animated: animated,
+                curve: curve,
+                duration: duration,
+                variant: variant,
+                size: size,
+                severity: severity,
+                style: style,
+                styleResolver: styleResolver,
+                overlay: overlay,
+                feedback: feedback,
+                focusable: focusable,
+                disabled: disabled,
+                mouseCursor: mouseCursor,
+                leading: leading,
+                trailing: trailing,
+              ),
+          child: child,
+        );
+      },
     );
   }
 
@@ -55,11 +71,17 @@ class WxCardTheme extends WxSheetTheme<WxCardThemeData> {
   /// Typical usage is as follows:
   ///
   /// ```dart
-  /// WxSheetThemeData theme = WxSheetTheme.of(context);
+  /// WxCardThemeData theme = WxCardTheme.of(context);
   /// ```
   static WxCardThemeData? maybeOf(BuildContext context) {
-    final parent = WxSheetTheme.maybeOf<WxCardThemeData>(context);
-    return WxCardThemeData.from(parent);
+    final parentTheme =
+        context.dependOnInheritedWidgetOfExactType<WxCardTheme>();
+    if (parentTheme != null) {
+      return WxCardThemeData.from(parentTheme.data);
+    }
+
+    final globalTheme = Theme.of(context).extension<WxCardThemeData>();
+    return globalTheme;
   }
 
   /// The [data] from the closest instance of
@@ -68,7 +90,7 @@ class WxCardTheme extends WxSheetTheme<WxCardThemeData> {
   /// Typical usage is as follows:
   ///
   /// ```dart
-  /// WxSheetThemeData theme = WxSheetTheme.of(context);
+  /// WxCardThemeData theme = WxCardTheme.of(context);
   /// ```
   static WxCardThemeData of(BuildContext context) {
     final parent = WxCardTheme.maybeOf(context);
