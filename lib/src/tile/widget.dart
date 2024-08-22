@@ -72,6 +72,7 @@ class WxCardTile extends WxSheet<WxCardTileThemeData> {
     super.checkmarkColor,
     super.checkmarkSize,
     super.checkmarkWeight,
+    super.checkmarkRounded,
     super.spinnerColor,
     super.spinnerBackgroundColor,
     super.spinnerSize,

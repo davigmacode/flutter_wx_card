@@ -72,6 +72,7 @@ class WxCard extends WxSheet<WxCardThemeData> {
     super.checkmarkColor,
     super.checkmarkSize,
     super.checkmarkWeight,
+    super.checkmarkRounded,
     super.spinnerColor,
     super.spinnerBackgroundColor,
     super.spinnerSize,

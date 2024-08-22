@@ -80,7 +80,7 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: 40),
               WxText.displayMedium(
-                'WxAlert',
+                'WxCard',
                 gradient: LinearGradient(
                   colors: [
                     Colors.green,
