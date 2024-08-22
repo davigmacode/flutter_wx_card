@@ -5,6 +5,7 @@ import 'package:wx_button/wx_button.dart';
 import 'package:wx_avatar/wx_avatar.dart';
 import 'wrapper.dart';
 import 'severity_colors.dart';
+import 'image.dart';
 
 class SampleVertical extends StatelessWidget {
   const SampleVertical({super.key});
@@ -81,8 +82,9 @@ class SampleVertical extends StatelessWidget {
                 ),
               ),
             ),
-            child: const Image(
-              image: NetworkImage('https://placehold.co/400x200.png'),
+            child: const PlatformImage(
+              'https://placehold.co/400x200.png',
+              aspectRatio: 16.0 / 9.0,
             ),
           )
         ],

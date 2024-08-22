@@ -33,7 +33,7 @@ dependencies:
   wx_card:
     path: ../
   wx_text: ^3.0.0
-  wx_button: ^2.0.3
+  wx_button: ^2.0.4
   wx_avatar: ^3.1.0
   theme_patrol: ^3.2.2
   url_launcher: ^6.3.0

@@ -369,10 +369,10 @@ packages:
     dependency: "direct main"
     description:
       name: wx_button
-      sha256: ae1c0b3530bfe513f7f4d95ce3987b2b6dac0786ddb4445d860db7e69492a4a5
+      sha256: d2db468e7e890e00a4171f29d50443830bd2874b8cffe7f02e4ff25a07fb68fe
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.4"
   wx_card:
     dependency: "direct main"
     description:
