@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* Added card and card tile widget.
+* Added card and card tile style.
+* Added card and card tile theme widget.
+* Added card and card tile theme data.
+* Added card and card tile theme preset.
