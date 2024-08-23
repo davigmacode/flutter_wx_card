@@ -54,17 +54,14 @@ class SampleVertical extends StatelessWidget {
                       children: [
                         WxIconButton(
                           onPressed: () {},
-                          severity: dangerColor,
                           child: const Icon(Icons.favorite_outline),
                         ),
                         WxIconButton(
                           onPressed: () {},
-                          severity: Colors.blue,
                           child: const Icon(Icons.chat_bubble_outline),
                         ),
                         WxIconButton(
                           onPressed: () {},
-                          severity: Colors.green,
                           child: const Icon(Icons.send),
                         ),
                       ],
@@ -72,6 +69,7 @@ class SampleVertical extends StatelessWidget {
                     const Spacer(),
                     WxIconButton(
                       onPressed: () {},
+                      severity: Colors.red,
                       child: const Icon(Icons.bookmark_outline),
                     ),
                   ],
