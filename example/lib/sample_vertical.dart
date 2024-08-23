@@ -26,9 +26,8 @@ class SampleVertical extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             header: WxListTile(
               leading: const WxAvatar.circle(
-                // image: NetworkImage('https://i.pravatar.cc/50?u=2'),
-                backgroundColor: warningColor,
-                child: Text('RP'),
+                backgroundColor: Colors.purple,
+                child: Text('Wx'),
               ),
               trailing: WxIconButton(
                 onPressed: () {},
@@ -38,8 +37,8 @@ class SampleVertical extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: const Icon(Icons.more_vert),
               ),
-              title: const Text('Info Alert'),
-              subtitle: const Text('This alert with close button'),
+              title: const Text('Widgetarian'),
+              subtitle: const Text('sponsored'),
             ),
             footer: Padding(
               padding: const EdgeInsets.symmetric(
@@ -47,7 +46,7 @@ class SampleVertical extends StatelessWidget {
                 vertical: 10,
               ),
               child: WxIconButtonTheme.merge(
-                style: const WxDrivenIconButtonStyle(radius: 12, iconSize: 14),
+                style: const WxDrivenIconButtonStyle(radius: 20, iconSize: 20),
                 child: Row(
                   children: [
                     Wrap(
@@ -55,20 +54,17 @@ class SampleVertical extends StatelessWidget {
                       children: [
                         WxIconButton(
                           onPressed: () {},
-                          variant: WxButtonVariant.filled,
                           severity: dangerColor,
                           child: const Icon(Icons.favorite_outline),
                         ),
                         WxIconButton(
                           onPressed: () {},
                           severity: Colors.blue,
-                          variant: WxButtonVariant.filled,
                           child: const Icon(Icons.chat_bubble_outline),
                         ),
                         WxIconButton(
                           onPressed: () {},
                           severity: Colors.green,
-                          variant: WxButtonVariant.filled,
                           child: const Icon(Icons.send),
                         ),
                       ],
