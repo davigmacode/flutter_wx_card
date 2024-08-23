@@ -4,10 +4,17 @@ import 'theme.dart';
 import 'theme_data.dart';
 import 'style.dart';
 
-/// The sheet widget serves as the building block for many Widgetarian components,
-/// providing a base layer for customization.
+/// A widget that represents a tile within a card with a horizontal layout.
+///
+/// This class extends the `WxSheet` class and provides a structure for
+/// creating tiles within cards. It inherits all the styling properties from
+/// `WxSheet` and adds specific properties for leading, trailing widgets,
+/// title, and subtitle
 class WxCardTile extends WxSheet<WxCardTileThemeData> {
-  /// Create a sheet widget
+  /// Creates a sheet widget with card tile specific styles.
+  ///
+  /// You can customize the tile's appearance using the various properties
+  /// inherited from `WxSheet` and the `WxCardTileThemeData` theme.
   const WxCardTile({
     super.key,
     super.animated,

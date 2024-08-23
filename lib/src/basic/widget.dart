@@ -4,10 +4,20 @@ import 'theme.dart';
 import 'theme_data.dart';
 import 'style.dart';
 
-/// The sheet widget serves as the building block for many Widgetarian components,
-/// providing a base layer for customization.
+/// A widget that represents a card with a variety of styling options.
+///
+/// This class extends the `WxSheet` class and provides additional features
+/// specifically for creating cards. It inherits all the styling properties
+/// from `WxSheet` and adds support for a header and footer widget.
 class WxCard extends WxSheet<WxCardThemeData> {
-  /// Create a sheet widget
+  /// Creates a sheet widget representing a card.
+  ///
+  /// Inherits all the styling properties from `WxSheet`.
+  ///
+  /// Additionally provides the following properties for customization:
+  ///
+  /// * `header`: Widget to be displayed at the top of the card.
+  /// * `footer`: Widget to be displayed at the bottom of the card.
   const WxCard({
     super.key,
     super.animated,

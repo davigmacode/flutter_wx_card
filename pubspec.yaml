@@ -1,7 +1,17 @@
 name: wx_card
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: Provides widgets that are used to create visually appealing cards and their individual tiles.
+version: 1.0.0
+homepage: https://github.com/davigmacode/flutter_wx_card
+
+topics:
+  - ui
+  - card
+  - event-driven
+  - widgetarian
+
+funding:
+ - https://buymeacoffee.com/davigmacode
+ - https://ko-fi.com/davigmacode
 
 environment:
   sdk: '>=3.1.0 <4.0.0'
